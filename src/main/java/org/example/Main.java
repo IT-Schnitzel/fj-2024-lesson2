@@ -3,12 +3,17 @@ package org.example;
 import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
 
 public class Main {
+
+    private  static Logger logger= LoggerFactory.getLogger(Main.class);
     public static void main(String[] args) throws IOException {
+        logger.info("App start");
         System.out.println("Hello world!");
 
         //Cat cat = new Cat("cat");
@@ -19,19 +24,21 @@ public class Main {
         try {
             City city = objectMapper.readValue(new File("city.json"), City.class);
             System.out.println(city);
+            logger.debug("Try change coords");
         } catch (IOException e) {
             System.out.println("exept");
-            throw new RuntimeException(e);
+            //throw new RuntimeException(e);
         }
-
+        logger.warn("Wrong data");
         try {
             ObjectMapper objectMapper2 = new ObjectMapper();
             City city2 = objectMapper2.readValue(new File("city-error.json"), City.class);
             System.out.println(city2);
         } catch (Exception e) {
+            logger.error("Error during second test");
             System.out.println("exepted test 2");
             //throw new RuntimeException(e);
         }
-
+        logger.info("App finished");
     }
 }
