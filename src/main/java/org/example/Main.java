@@ -31,7 +31,8 @@ public class Main {
             File file = new File("city.xml");
             logger.info("Created XML");
         } catch (IOException e) {
-            System.out.println("exept");
+            logger.error("Error during first test");
+            System.out.println("exeption on test 1");
             //throw new RuntimeException(e);
         }
         logger.warn("Wrong data");
