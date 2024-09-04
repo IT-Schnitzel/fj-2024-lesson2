@@ -3,6 +3,7 @@ package org.example;
 import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,6 +26,10 @@ public class Main {
             City city = objectMapper.readValue(new File("city.json"), City.class);
             System.out.println(city);
             logger.debug("Try change coords");
+            XmlMapper xmlMapper = new XmlMapper();
+            xmlMapper.writeValue(new File("city.xml"), city);
+            File file = new File("city.xml");
+            logger.info("Created XML");
         } catch (IOException e) {
             System.out.println("exept");
             //throw new RuntimeException(e);
