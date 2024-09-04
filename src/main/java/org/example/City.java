@@ -1,18 +1,23 @@
 package org.example;
+
 import lombok.*;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-class Coords {
-    private double lat;
-    private double lon;
+@ToString
+public class City {
+    private String slug;
+    private Coordinates coords;
 }
 
 @Getter
 @Setter
-@RequiredArgsConstructor
-public class City {
-    final private String slug;
-    final private Coords coords;
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
+class Coordinates {
+    private double lat;
+    private double lon;
 }
